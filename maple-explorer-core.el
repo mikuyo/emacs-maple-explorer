@@ -290,7 +290,7 @@
          :type 'cons
          :group ',togg-function)
 
-       (defcustom ,display-alist '((side . right) (slot . -1))
+       (defcustom ,display-alist '((side . left) (slot . -1))
          "Window display alist."
          :type '(cons)
          :group 'togg-function)
