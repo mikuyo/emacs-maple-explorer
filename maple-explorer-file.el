@@ -48,7 +48,7 @@
   :group 'maple-explorer-file)
 
 (defcustom maple-explorer-file-hidden-regexp-list
-  '("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "\\.o$")
+  '()
   "*The regexp list matching hidden files."
   :type  '(repeat (choice regexp))
   :group 'maple-explorer-file)
@@ -182,6 +182,14 @@
       (maple-explorer-file-refresh)
       (message "File '%s' successfully copy to '%s'" name (file-name-nondirectory new-name)))))
 
+(defun maple-explorer-file-copy-path ()
+  "Copy path of the current file."
+  (interactive)
+  (maple-explorer-file-with
+   (let ((path (file-truename file)))
+     (kill-new path)
+     (message "Path '%s' successfully copied" path))))
+
 (defun maple-explorer-file-create()
   "Make new directory."
   (interactive)
@@ -239,6 +247,7 @@
          ["--" #'ignore t]
          (vector "Mark" 'maple-explorer-mark-or-unmark)
          (vector "Copy" 'maple-explorer-file-copy)
+         (vector "Copy_path" 'maple-explorer-file-copy-path)
          (vector "Rename" 'maple-explorer-file-rename)
          (vector "Delete" 'maple-explorer-file-remove)
          (vector "Refresh" 'maple-explorer-file-refresh))))
