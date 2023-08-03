@@ -202,6 +202,16 @@
     (maple-explorer-file-refresh)
     (message "Create %s '%s' successfully" typ file)))
 
+(defun maple-explorer-directory-create()
+  "Make new directory."
+  (interactive)
+  (let* ((dir   (read-directory-name "Create directory: ")))
+    (if (file-exists-p dir)
+        (error "Cannot create directory %s: file exists" dir)
+      (make-directory dir))
+    (maple-explorer-file-refresh)
+    (message "Create directory '%s' successfully" dir)))
+
 (defun maple-explorer-file-remove()
   "Remove file or directory at point."
   (interactive)
@@ -275,6 +285,7 @@
     (define-key map (kbd "C") 'maple-explorer-file-copy)
     (define-key map (kbd "D") 'maple-explorer-file-remove)
     (define-key map (kbd "+") 'maple-explorer-file-create)
+    (define-key map (kbd "") 'maple-explorer-directory-create)
     (define-key map (kbd "^") 'maple-explorer-file-updir)
     (define-key map (kbd "f") 'maple-explorer-file-root)
     (define-key map (kbd "F") 'maple-explorer-file-switch-root)
