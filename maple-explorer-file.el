@@ -247,7 +247,8 @@
   "Explorer file right menu."
   (easy-menu-create-menu
    'maple-explorer-file-right-menu
-   (list (vector "New" 'maple-explorer-file-create)
+   (list (vector "New_file" 'maple-explorer-file-create)
+         (vector "New_folder" 'maple-explorer-directory-create)
          ["--" #'ignore t]
          (vector "Open" 'maple-explorer-file-open)
          (list "Open With"
