@@ -285,7 +285,7 @@
          :type 'string
          :group ',togg-function)
 
-       (defcustom ,buffer-width '(20 . 32)
+       (defcustom ,buffer-width '(40 . 60)
          "Window's length (min . max)."
          :type 'cons
          :group ',togg-function)
